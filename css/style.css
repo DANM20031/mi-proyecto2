@@ -1,7 +1,6 @@
-/* Importar fuente moderna de Google */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+/* Importar Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap');
 
-/* Reset */
 * {
   margin: 0;
   padding: 0;
@@ -9,163 +8,71 @@
 }
 
 body {
-  font-family: 'Poppins', sans-serif;
-  background-color: #f9f9f9;
+  font-family: 'Montserrat', sans-serif;
+  background-color: #f3f4f6;
   color: #333;
   line-height: 1.6;
+  overflow-x: hidden;
+  animation: fadeIn 0.8s ease-in;
+}
+
+/* Animación inicial */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 /* Navbar */
 .navbar {
-  background-color: #1e1e2f;
+  background-color: #1f2937;
   color: white;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 20px 40px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   position: sticky;
   top: 0;
-  z-index: 1000;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  z-index: 100;
 }
 
 .logo {
-  font-size: 1.8rem;
-  font-weight: 700;
+  font-size: 2rem;
+  font-weight: 800;
   color: #ffffff;
 }
 
 .nav-links {
   list-style: none;
   display: flex;
-  gap: 25px;
+  gap: 30px;
 }
 
 .nav-links li a {
-  color: #ffffff;
+  color: #f9fafb;
   text-decoration: none;
-  font-weight: 500;
-  transition: color 0.3s ease;
+  font-weight: 600;
+  position: relative;
 }
 
-.nav-links li a:hover {
-  color: #ffd700;
+.nav-links li a::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  background: #3b82f6;
+  left: 0;
+  bottom: -5px;
+  transition: width 0.3s;
+}
+
+.nav-links li a:hover::after {
+  width: 100%;
 }
 
 .cart {
-  background-color: #ffd700;
-  color: #1e1e2f;
-  padding: 6px 12px;
-  border-radius: 20px;
-  font-weight: bold;
-}
-
-/* Banner */
-.banner img {
-  width: 100%;
-  height: auto;
-  max-height: 400px;
-  object-fit: cover;
-  border-bottom: 5px solid #ffd700;
-}
-
-/* Courses Section */
-.courses {
-  padding: 60px 30px;
-  text-align: center;
-  background: #fff;
-}
-
-.courses h2 {
-  font-size: 2.5rem;
-  margin-bottom: 40px;
-  color: #1e1e2f;
-}
-
-.course-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 30px;
-  padding: 0 10px;
-}
-
-.course {
-  background-color: #ffffff;
-  border-radius: 12px;
-  padding: 20px;
-  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.course:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0,0,0,0.15);
-}
-
-.course img {
-  width: 100%;
-  height: 160px;
-  object-fit: cover;
-  border-radius: 8px;
-  margin-bottom: 15px;
-}
-
-.course h3 {
-  font-size: 1.4rem;
-  margin: 10px 0;
-  color: #1e1e2f;
-}
-
-.course p {
-  font-size: 0.95rem;
-  color: #555;
-  margin-bottom: 15px;
-}
-
-/* Botón personalizado */
-.course button {
-  background: linear-gradient(135deg, #1e90ff, #00c3ff);
-  color: white;
-  border: none;
-  padding: 10px 18px;
+  background-color: #facc15;
+  color: #111827;
+  padding: 6px 14px;
   border-radius: 30px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background 0.3s ease;
-}
-
-.course button:hover {
-  background: linear-gradient(135deg, #0f78d4, #00a8d6);
-}
-
-/* Footer */
-footer {
-  background-color: #1e1e2f;
-  color: #fff;
-  text-align: center;
-  padding: 20px;
-  margin-top: 60px;
-  font-size: 0.9rem;
-}
-
-/* Responsive para móvil */
-@media (max-width: 768px) {
-  .navbar {
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .nav-links {
-    flex-direction: column;
-    gap: 10px;
-    align-items: center;
-  }
-
-  .courses h2 {
-    font-size: 2rem;
-  }
-
-  .course button {
-    width: 100%;
-  }
-}
+  font-weight
