@@ -18,11 +18,29 @@
         <li><a href="#">Contacto</a></li>
         <li><a href="#">Sobre Nosotros</a></li>
       </ul>
-      <div class="cart">
-        🛒 <span id="cart-count">0</span>
-      </div>
+      <div class="cart" onclick="mostrarCarrito()">
+  🛒 <span id="cart-count">0</span>
+</div>
     </nav>
   </header>
+
+  <!-- Modal del carrito -->
+<div id="cart-modal" class="modal" style="display: none;">
+  <div class="modal-content">
+    <span class="close" onclick="cerrarCarrito()">&times;</span>
+    <h2>Tu Carrito</h2>
+    <div id="cart-items"></div>
+    <h3 id="total-price">Total: $0</h3>
+    <h4>Métodos de Pago</h4>
+    <ul>
+      <li>💳 Tarjeta de crédito/débito</li>
+      <li>💵 Pago en efectivo</li>
+      <li>📱 Transferencia</li>
+      <li>💰 PayPal</li>
+    </ul>
+  </div>
+</div>
+
 
  <!-- Banner -->
 <section class="banner">
