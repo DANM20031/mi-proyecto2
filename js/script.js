@@ -42,3 +42,22 @@ function mostrarCarrito() {
 function cerrarCarrito() {
   document.getElementById('cart-modal').style.display = 'none';
 }
+
+function realizarCompra() {
+  if (carrito.length === 0) {
+    alert("Tu carrito está vacío.");
+    return;
+  }
+  alert("Gracias por tu compra. Pronto recibirás confirmación.");
+  carrito = [];
+  actualizarContador();
+  cerrarCarrito();
+}
+
+function abrirChat() {
+  document.getElementById("chat-box").style.display = "block";
+}
+
+function cerrarChat() {
+  document.getElementById("chat-box").style.display = "none";
+}
