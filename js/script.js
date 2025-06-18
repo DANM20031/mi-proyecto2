@@ -7,28 +7,24 @@ const cursos = {
 
 let carrito = [];
 
-// Agrega un curso al carrito
 function addToCart(nombre) {
   carrito.push({ nombre, precio: cursos[nombre] });
   actualizarContador();
 }
 
-// Elimina un curso del carrito (por nombre, elimina la primera coincidencia)
 function eliminarDelCarrito(nombre) {
   const index = carrito.findIndex(item => item.nombre === nombre);
   if (index !== -1) {
-    carrito.splice(index, 1); // Elimina un solo elemento
+    carrito.splice(index, 1);
     actualizarContador();
-    mostrarCarrito(); // Actualiza el modal después de eliminar
+    mostrarCarrito();
   }
 }
 
-// Actualiza el contador del carrito (ícono)
 function actualizarContador() {
   document.getElementById('cart-count').textContent = carrito.length;
 }
 
-// Muestra el contenido del carrito en el modal
 function mostrarCarrito() {
   const modal = document.getElementById('cart-modal');
   const itemsContainer = document.getElementById('cart-items');
@@ -40,12 +36,8 @@ function mostrarCarrito() {
   } else {
     let total = 0;
     let html = "<ul>";
-    carrito.forEach((item, index) => {
-      html += `
-        <li>
-          ${item.nombre} - $${item.precio} 
-          <button onclick="eliminarDelCarrito('${item.nombre}')">❌ Eliminar</button>
-        </li>`;
+    carrito.forEach(item => {
+      html += `<li>${item.nombre} - $${item.precio} <button class="btn-eliminar" onclick="eliminarDelCarrito('${item.nombre}')">Eliminar</button></li>`;
       total += item.precio;
     });
     html += "</ul>";
@@ -56,12 +48,10 @@ function mostrarCarrito() {
   modal.style.display = 'block';
 }
 
-// Cierra el modal del carrito
 function cerrarCarrito() {
   document.getElementById('cart-modal').style.display = 'none';
 }
 
-// Simula la compra y limpia el carrito
 function realizarCompra() {
   if (carrito.length === 0) {
     alert("Tu carrito está vacío.");
@@ -73,12 +63,36 @@ function realizarCompra() {
   cerrarCarrito();
 }
 
-// Abre el chat del asistente virtual
+function mostrarOpcionesPago() {
+  const metodo = document.getElementById('seleccion-pago').value;
+  const contenedor = document.getElementById('opciones-pago');
+  let contenido = "";
+
+  switch (metodo) {
+    case "tarjeta":
+      contenido = "Introduce los datos de tu tarjeta en la pasarela segura.";
+      break;
+    case "efectivo":
+      contenido = "Puedes pagar en puntos autorizados como Baloto o Efecty.";
+      break;
+    case "transferencia":
+      contenido = "Haz tu pago a la cuenta bancaria 123456789 del banco ABC.";
+      break;
+    case "paypal":
+      contenido = "Serás redirigido a PayPal para finalizar tu pago.";
+      break;
+    default:
+      contenido = "Selecciona una opción para ver detalles.";
+  }
+
+  contenedor.innerHTML = `<p>${contenido}</p>`;
+  contenedor.style.display = 'block';
+}
+
 function abrirChat() {
   document.getElementById("chat-box").style.display = "block";
 }
 
-// Cierra el chat del asistente virtual
 function cerrarChat() {
   document.getElementById("chat-box").style.display = "none";
 }

@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Plataforma de Cursos</title>
   <link rel="stylesheet" href="css/style.css" />
+  <script defer src="js/script.js"></script>
 </head>
 <body>
 
@@ -14,14 +15,58 @@
       <h1 class="logo">Cursos Online</h1>
       <ul class="nav-links">
         <li><a href="#">Inicio</a></li>
-        <li><a href="#">Cursos</a></li>
-        <li><a href="#">Contacto</a></li>
-        <li><a href="#">Sobre Nosotros</a></li>
+        <li><a href="#cursos">Cursos</a></li>
+        <li><a href="#contacto">Contacto</a></li>
         <li><a href="#pagos">Métodos de Pago</a></li>
       </ul>
       <div class="cart" onclick="mostrarCarrito()">🛒 <span id="cart-count">0</span></div>
     </nav>
   </header>
+
+  <!-- Banner -->
+  <section class="banner">
+    <img src="images/banner.jpg" alt="Banner de Cursos" />
+  </section>
+
+  <!-- Sección de cursos -->
+  <section id="cursos" class="courses">
+    <h2>Nuestros Cursos</h2>
+    <div class="course-list">
+
+      <div class="course">
+        <img src="images/html.webp" alt="Curso HTML" />
+        <h3>Curso de HTML</h3>
+        <p>Aprende la base de la web con HTML5.</p>
+        <p class="precio">$10 USD</p>
+        <button onclick="addToCart('HTML')">Agregar al carrito</button>
+      </div>
+
+      <div class="course">
+        <img src="images/css.webp" alt="Curso CSS" />
+        <h3>Curso de CSS</h3>
+        <p>Domina el diseño web con CSS3.</p>
+        <p class="precio">$15 USD</p>
+        <button onclick="addToCart('CSS')">Agregar al carrito</button>
+      </div>
+
+      <div class="course">
+        <img src="images/javascript.webp" alt="Curso JavaScript" />
+        <h3>Curso de JavaScript</h3>
+        <p>Haz tus sitios interactivos con JavaScript.</p>
+        <p class="precio">$20 USD</p>
+        <button onclick="addToCart('JavaScript')">Agregar al carrito</button>
+      </div>
+
+      <div class="course">
+        <img src="images/inteligenciaartificial.jpg" alt="Curso IA" />
+        <h3>Curso de Inteligencia Artificial</h3>
+        <p>Descubre el futuro con IA.</p>
+        <p class="precio">$30 USD</p>
+        <button onclick="addToCart('IA')">Agregar al carrito</button>
+      </div>
+
+    </div>
+  </section>
 
   <!-- Modal del carrito -->
   <div id="cart-modal" class="modal" style="display: none;">
@@ -30,66 +75,33 @@
       <h2>Tu Carrito</h2>
       <div id="cart-items"></div>
       <h3 id="total-price">Total: $0</h3>
-      <h4>Métodos de Pago</h4>
-      <ul>
-        <li>💳 Tarjeta de crédito/débito</li>
-        <li>💵 Pago en efectivo</li>
-        <li>🏦 Transferencia</li>
-        <li>🅿️ PayPal</li>
-      </ul>
+      
+      <div class="metodo-pago">
+        <label for="seleccion-pago">Selecciona un método de pago:</label>
+        <select id="seleccion-pago" onchange="mostrarOpcionesPago()">
+          <option value="">-- Seleccionar --</option>
+          <option value="tarjeta">Tarjeta</option>
+          <option value="efectivo">Efectivo</option>
+          <option value="transferencia">Transferencia</option>
+          <option value="paypal">PayPal</option>
+        </select>
+        <div class="opciones-pago" id="opciones-pago">
+          <p><strong>Detalles del método seleccionado aparecerán aquí.</strong></p>
+        </div>
+      </div>
+
       <button onclick="realizarCompra()" style="margin-top: 15px;">Realizar compra</button>
     </div>
   </div>
 
-  <!-- Banner -->
-  <section class="banner">
-    <img src="images/banner.jpg" alt="Banner de Cursos" />
-  </section>
-
-  <!-- Sección de cursos -->
-  <section class="courses">
-    <h2>Nuestros Cursos</h2>
-    <div class="course-list">
-
-      <div class="course">
-        <img src="images/html.webp" alt="Curso HTML" />
-        <h3>Curso de HTML</h3>
-        <p>Aprende la base de la web con HTML5.</p>
-        <button onclick="addToCart('HTML')">Agregar al carrito</button>
-      </div>
-
-      <div class="course">
-        <img src="images/css.webp" alt="Curso CSS" />
-        <h3>Curso de CSS</h3>
-        <p>Domina el diseño web con CSS3.</p>
-        <button onclick="addToCart('CSS')">Agregar al carrito</button>
-      </div>
-
-      <div class="course">
-        <img src="images/javascript.webp" alt="Curso JavaScript" />
-        <h3>Curso de JavaScript</h3>
-        <p>Haz tus sitios interactivos con JavaScript.</p>
-        <button onclick="addToCart('JavaScript')">Agregar al carrito</button>
-      </div>
-
-      <div class="course">
-        <img src="images/inteligenciaartificial.jpg" alt="Curso IA" />
-        <h3>Curso de Inteligencia Artificial</h3>
-        <p>Descubre el futuro con IA.</p>
-        <button onclick="addToCart('IA')">Agregar al carrito</button>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- NUEVA sección de métodos de pago -->
+  <!-- Sección de métodos de pago -->
   <section id="pagos" class="courses">
     <h2>Métodos de Pago</h2>
-    <ul style="list-style: none; padding: 0;">
+    <ul>
       <li>💳 Tarjeta de crédito/débito</li>
       <li>💵 Pago en efectivo</li>
       <li>🏦 Transferencia Bancaria</li>
-      <li>🅿️ PayPal</li>
+      <li>🌐 PayPal</li>
     </ul>
   </section>
 
@@ -99,19 +111,17 @@
   </footer>
 
   <!-- Asistente virtual -->
-  <div id="bot-flotante" onclick="abrirChat()">💬</div>
-
+  <div id="bot-flotante" onclick="abrirChat()">🤖</div>
   <div id="chat-box" style="display: none;">
     <div><strong>Asistente Virtual</strong></div>
     <p>Hola 👋, ¿cómo puedo ayudarte?</p>
     <ul>
-      <li>📌 ¿Cómo comprar un curso?</li>
-      <li>📌 ¿Qué métodos de pago aceptan?</li>
-      <li>📌 ¿Dónde me contacto?</li>
+      <li>❓ ¿Cómo comprar un curso?</li>
+      <li>💳 ¿Qué métodos de pago aceptan?</li>
+      <li>📞 ¿Dónde me contacto?</li>
     </ul>
     <button onclick="cerrarChat()">Cerrar</button>
   </div>
 
-  <script src="js/script.js"></script>
 </body>
 </html>
