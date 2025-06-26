@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Planes Turísticos</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script defer src="js/script.js"></script>
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <h1 class="logo">K_Ory</h1>
+      <ul class="nav-links">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="planes.html">Planes Turísticos</a></li>
+        <li><a href="reserva.html">Reserva</a></li>
+        <li><a href="sobre-nosotros.html">Sobre Nosotros</a></li>
+        <li><a href="pagos.html">Métodos de Pago</a></li>
+      </ul>
+      <div class="cart" onclick="mostrarCarrito()">🛒 <span id="cart-count">0</span></div>
+    </nav>
+  </header>
+
+  <section class="courses">
+    <h2>Nuestros Planes Turísticos</h2>
+    <div class="course-list">
+      <div class="course">
+        <img src="images/cabo.jpg" alt="Cabo de la Vela" onclick="mostrarGaleria('cabo')" style="cursor: pointer;">
+        <h3>Cabo de la Vela</h3>
+        <p>Explora playas vírgenes y cultura Wayuu en este destino mágico.</p>
+        <p class="precio">$120 USD</p>
+        <button onclick="addToCart('Cabo de la Vela')">Agregar al carrito</button>
+      </div>
+      <div class="course">
+        <img <img src="images/palomino.jpg" alt="Palomino" onclick="mostrarGaleria('palomino')" style="cursor: pointer;">
+        <h3>Palomino</h3>
+        <p>Disfruta de ríos, playas y aventura en este paraíso natural.</p>
+        <p class="precio">$90 USD</p>
+        <button onclick="addToCart('Palomino')">Agregar al carrito</button>
+      </div>
+      <div class="course">
+        <img src="images/punta.jpg" alt="Punta Gallinas" onclick="mostrarGaleria('punta')" style="cursor: pointer;">
+        <h3>Punta Gallinas</h3>
+        <p>Descubre el punto más norte de Suramérica en un viaje inolvidable.</p>
+        <p class="precio">$150 USD</p>
+        <button onclick="addToCart('Punta Gallinas')">Agregar al carrito</button>
+      </div>
+      <div class="course">
+      <img src="images/altaguajira.jpg" alt="Alta Guajira" onclick="mostrarGaleria('alta')" style="cursor: pointer;">
+        <h3>Alta Guajira</h3>
+        <p>Una expedición entre desiertos, dunas y cultura indígena auténtica.</p>
+        <p class="precio">$180 USD</p>
+        <button onclick="addToCart('Alta Guajira')">Agregar al carrito</button>
+      </div>
+    </div>
+  </section>
+
+  <div id="cart-modal" class="modal" style="display: none;">
+    <div class="modal-content">
+      <span class="close" onclick="cerrarCarrito()">&times;</span>
+      <h2>Tu Carrito</h2>
+      <div id="cart-items"></div>
+      <h3 id="total-price">Total: $0</h3>
+      <div class="metodo-pago">
+        <label for="seleccion-pago">Selecciona un método de pago:</label>
+        <select id="seleccion-pago" onchange="mostrarOpcionesPago()">
+          <option value="">-- Seleccionar --</option>
+          <option value="tarjeta">Tarjeta</option>
+          <option value="efectivo">Efectivo</option>
+          <option value="transferencia">Transferencia</option>
+          <option value="paypal">PayPal</option>
+        </select>
+        <div class="opciones-pago" id="opciones-pago">
+          <p><strong>Detalles del método seleccionado aparecerán aquí.</strong></p>
+        </div>
+      </div>
+      <button onclick="realizarCompra()" style="margin-top: 15px;">Realizar compra</button>
+    </div>
+  </div>
+
+  <div id="galeria-modal" class="modal" style="display: none;">
+  <div class="modal-content">
+    <span class="close" onclick="cerrarGaleria()">&times;</span>
+    <h2 id="titulo-galeria">Galería</h2>
+    <div id="galeria-imagenes" class="galeria-grid"></div>
+  </div>
+</div>
+
+
+  <footer>
+    <p>© 2025 K_Ory.Sebastian Toncel Padilla</p>
+  </footer>
+</body>
+</html>
+
